@@ -142,13 +142,22 @@ export default function Hero() {
 
             <div style={{ textAlign: 'center', marginBottom: '32px' }}>
               <div style={{
-                width: 80, height: 80,
-                background: 'linear-gradient(135deg, var(--orange), var(--yellow))',
-                borderRadius: '20px', margin: '0 auto 16px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <Shield size={36} color="white" strokeWidth={1.5}/>
-              </div>
+  width: 80, height: 80,
+  borderRadius: '20px', margin: '0 auto 16px',
+  overflow: 'hidden',
+  display: 'flex', alignItems: 'center', justifyContent: 'center',
+  boxShadow: '0 8px 24px rgba(232,97,42,0.3)',
+}}>
+  <img
+    src="/logo-krueng.png"
+    alt="Krueng Brick"
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+    onError={e => {
+      e.target.style.display = 'none'
+      e.target.parentNode.innerHTML = '<span style="color:white;font-weight:800;font-size:2rem;font-family:serif">K</span>'
+    }}
+  />
+</div>
               <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', marginBottom: '8px' }}>KRUENG BRICK</h3>
               <p style={{ color: 'var(--gray)', fontSize: '0.9rem' }}>Batu Bata Ramah Lingkungan</p>
             </div>

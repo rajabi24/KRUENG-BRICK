@@ -68,22 +68,33 @@ export default function Swot() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '48px' }}>
+        <div style={{
+          display: 'grid', gridTemplateColumns: '1fr 1fr',
+          gap: '20px', marginBottom: '48px',
+        }}>
           {swotData.map((item, i) => (
-            <div key={i} onClick={() => setActiveQuadrant(activeQuadrant === i ? null : i)} style={{
-              borderRadius: '24px', padding: '32px', cursor: 'pointer',
-              transition: 'var(--transition)',
-              background: activeQuadrant === i ? item.bgActive : item.bg,
-              boxShadow: activeQuadrant === i ? `0 16px 48px ${item.color}33` : 'var(--shadow-soft)',
-              transform: activeQuadrant === i ? 'scale(1.02)' : 'scale(1)',
-              border: `2px solid ${activeQuadrant === i ? 'transparent' : item.color + '22'}`,
-            }}>
+            <div
+              key={i}
+              onClick={() => setActiveQuadrant(activeQuadrant === i ? null : i)}
+              style={{
+                borderRadius: '24px', padding: '32px', cursor: 'pointer',
+                transition: 'var(--transition)',
+                background: activeQuadrant === i ? item.bgActive : item.bg,
+                boxShadow: activeQuadrant === i
+                  ? `0 16px 48px ${item.color}33`
+                  : 'var(--shadow-soft)',
+                transform: activeQuadrant === i ? 'scale(1.02)' : 'scale(1)',
+                border: `2px solid ${activeQuadrant === i ? 'transparent' : item.color + '22'}`,
+              }}
+            >
+              {/* Header Row */}
               <div style={{
                 display: 'flex', alignItems: 'center',
                 justifyContent: 'space-between',
                 marginBottom: activeQuadrant === i ? '24px' : '0',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                  {/* Icon Box */}
                   <div style={{
                     width: 52, height: 52,
                     background: activeQuadrant === i ? 'rgba(255,255,255,0.2)' : 'white',
@@ -91,7 +102,10 @@ export default function Swot() {
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: activeQuadrant === i ? 'white' : item.color,
                     boxShadow: 'var(--shadow-soft)',
+                    flexShrink: 0,
                   }}>{item.icon}</div>
+
+                  {/* Label */}
                   <div>
                     <div style={{
                       fontSize: '0.72rem', fontWeight: 700,
@@ -102,22 +116,33 @@ export default function Swot() {
                     <h3 style={{
                       fontFamily: 'var(--font-heading)', fontSize: '1.4rem',
                       color: activeQuadrant === i ? 'white' : 'var(--dark)',
+                      margin: 0,
                     }}>{item.label}</h3>
                   </div>
                 </div>
+
+                {/* Big Letter - FIXED */}
                 <div style={{
-                  fontFamily: 'var(--font-heading)', fontSize: '4rem', fontWeight: 800,
-                  color: activeQuadrant === i ? 'rgba(255,255,255,0.15)' : item.color + '22',
-                  lineHeight: 1, userSelect: 'none',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '4rem',
+                  fontWeight: 800,
+                  lineHeight: 1,
+                  userSelect: 'none',
+                  color: activeQuadrant === i ? 'rgba(255,255,255,0.15)' : item.color,
+                  opacity: activeQuadrant === i ? 1 : 0.2,
                 }}>{item.key}</div>
               </div>
 
+              {/* Expandable Items */}
               <div style={{
                 maxHeight: activeQuadrant === i ? '400px' : '0',
                 overflow: 'hidden',
                 transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
               }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '4px' }}>
+                <div style={{
+                  display: 'flex', flexDirection: 'column',
+                  gap: '10px', paddingTop: '4px',
+                }}>
                   {item.items.map((point, j) => (
                     <div key={j} style={{
                       display: 'flex', alignItems: 'flex-start', gap: '12px',
@@ -126,18 +151,21 @@ export default function Swot() {
                       borderRadius: '12px',
                     }}>
                       <div style={{
-                        width: 6, height: 6, background: 'rgba(255,255,255,0.8)',
-                        borderRadius: '50%', marginTop: '7px', flexShrink: 0,
+                        width: 6, height: 6,
+                        background: 'rgba(255,255,255,0.8)',
+                        borderRadius: '50%',
+                        marginTop: '7px', flexShrink: 0,
                       }}/>
                       <p style={{
-                        color: 'rgba(255,255,255,0.9)', fontSize: '0.88rem',
-                        lineHeight: 1.6, margin: 0,
+                        color: 'rgba(255,255,255,0.9)',
+                        fontSize: '0.88rem', lineHeight: 1.6, margin: 0,
                       }}>{point}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
+              {/* Click Hint */}
               {activeQuadrant !== i && (
                 <div style={{
                   marginTop: '16px', fontSize: '0.78rem',
@@ -148,8 +176,10 @@ export default function Swot() {
           ))}
         </div>
 
+        {/* Summary Bar */}
         <div style={{
-          background: 'var(--cream)', borderRadius: '24px', padding: '32px 40px',
+          background: 'var(--cream)', borderRadius: '24px',
+          padding: '32px 40px',
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '24px', textAlign: 'center',
         }}>
@@ -159,10 +189,13 @@ export default function Swot() {
                 fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: 800,
                 color: item.color, lineHeight: 1, marginBottom: '4px',
               }}>{item.items.length}</div>
-              <div style={{ fontWeight: 700, fontSize: '0.85rem', color: item.color, marginBottom: '2px' }}>
-                {item.label}
+              <div style={{
+                fontWeight: 700, fontSize: '0.85rem',
+                color: item.color, marginBottom: '2px',
+              }}>{item.label}</div>
+              <div style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>
+                {item.sublabel} teridentifikasi
               </div>
-              <div style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>{item.sublabel} teridentifikasi</div>
             </div>
           ))}
         </div>

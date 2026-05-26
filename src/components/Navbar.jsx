@@ -54,13 +54,22 @@ export default function Navbar() {
         }}
       >
         <div style={{
-          width: 40, height: 40,
-          background: 'linear-gradient(135deg, var(--orange), var(--teal))',
-          borderRadius: '10px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: 'white', fontWeight: 800, fontSize: '16px',
-          fontFamily: 'var(--font-heading)',
-        }}>K</div>
+  width: 40, height: 40,
+  borderRadius: '10px',
+  overflow: 'hidden',
+  display: 'flex', alignItems: 'center', justifyContent: 'center',
+}}>
+  <img
+    src="/logo-krueng.png"
+    alt="Krueng Brick Logo"
+    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+    onError={e => {
+      e.target.style.display = 'none'
+      e.target.parentNode.style.background = 'linear-gradient(135deg, var(--orange), var(--teal))'
+      e.target.parentNode.innerHTML = '<span style="color:white;font-weight:800;font-size:16px;font-family:serif">K</span>'
+    }}
+  />
+</div>
         <span style={{
           fontFamily: 'var(--font-heading)',
           fontWeight: 700, fontSize: '1.2rem',

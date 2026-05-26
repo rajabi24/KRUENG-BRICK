@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Users, MapPin, Heart, Home, ShoppingBag, Store, HardHat, Building2, BarChart3, Target, Megaphone, Package } from 'lucide-react'
+import { Users, MapPin, Heart, Home, ShoppingBag, Store, HardHat, Building2, Megaphone, Package } from 'lucide-react'
 
 export default function Pasar() {
   const [activeTab, setActiveTab] = useState('b2c')
@@ -65,7 +65,7 @@ export default function Pasar() {
     { label: 'Ekonomis', value: 90, color: 'var(--teal)' },
     { label: 'Ramah Lingkungan', value: 95, color: 'var(--orange)' },
     { label: 'Lokal & Autentik', value: 100, color: 'var(--purple)' },
-    { label: 'Berkelanjutan', value: 88, color: 'var(--yellow)' },
+    { label: 'Berkelanjutan', value: 88, color: '#E85A4F' },
   ]
 
   return (
@@ -107,9 +107,8 @@ export default function Pasar() {
                   cursor: 'default', borderTop: `4px solid ${seg.color}`,
                 }}>
                 <div style={{
-                  width: 52, height: 52, background: seg.bg,
-                  borderRadius: '14px', display: 'flex',
-                  alignItems: 'center', justifyContent: 'center',
+                  width: 52, height: 52, background: seg.bg, borderRadius: '14px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: seg.color, marginBottom: '16px',
                 }}>{seg.icon}</div>
                 <h4 style={{
@@ -130,7 +129,7 @@ export default function Pasar() {
           </div>
         </div>
 
-        {/* B2C / B2B Tabs */}
+        {/* B2C B2B */}
         <div style={{ marginBottom: '80px' }}>
           <h3 style={{
             fontFamily: 'var(--font-heading)', fontSize: '1.6rem',
@@ -173,7 +172,6 @@ export default function Pasar() {
                   {channels[activeTab].desc}
                 </p>
               </div>
-
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 {channels[activeTab].items.map((item, i) => (
                   <div key={i}
@@ -196,7 +194,7 @@ export default function Pasar() {
           </div>
         </div>
 
-        {/* Positioning */}
+        {/* Positioning — FIXED BAR */}
         <div style={{
           background: 'white', borderRadius: '28px',
           padding: '48px', boxShadow: 'var(--shadow-soft)',
@@ -217,17 +215,34 @@ export default function Pasar() {
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               {positioning.map((p, i) => (
                 <div key={i}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{p.label}</span>
-                    <span style={{ fontWeight: 800, color: p.color, fontSize: '0.9rem' }}>{p.value}%</span>
+                  <div style={{
+                    display: 'flex', justifyContent: 'space-between', marginBottom: '10px',
+                  }}>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--dark)' }}>
+                      {p.label}
+                    </span>
+                    <span style={{ fontWeight: 800, color: p.color, fontSize: '0.9rem' }}>
+                      {p.value}%
+                    </span>
                   </div>
-                  <div style={{ height: '10px', background: 'rgba(0,0,0,0.06)', borderRadius: '100px', overflow: 'hidden' }}>
+                  {/* FIXED: pakai table-style agar bar pasti muncul */}
+                  <div style={{
+                    width: '100%',
+                    height: '12px',
+                    background: 'rgba(0,0,0,0.07)',
+                    borderRadius: '100px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}>
                     <div style={{
-                      height: '100%', width: `${p.value}%`,
-                      background: `linear-gradient(90deg, ${p.color}, ${p.color}aa)`,
+                      position: 'absolute',
+                      top: 0, left: 0,
+                      height: '12px',
+                      width: `${p.value}%`,
+                      background: p.color,
                       borderRadius: '100px',
                     }}/>
                   </div>
