@@ -43,15 +43,14 @@ export default function Produk() {
           </p>
         </div>
 
-        <div style={{
+        <div className="produk-grid" style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr',
           gap: '60px', alignItems: 'center', marginBottom: '80px',
         }}>
-          {/* Left */}
           <div style={{ position: 'relative' }}>
             <div style={{
               background: 'var(--cream)', borderRadius: '32px',
-              padding: '48px 40px', position: 'relative', overflow: 'hidden',
+              padding: '40px 36px', position: 'relative', overflow: 'hidden',
             }}>
               <div style={{
                 position: 'absolute', top: -40, right: -40,
@@ -66,7 +65,7 @@ export default function Produk() {
 
               <h3 style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '1.3rem', marginBottom: '32px', position: 'relative',
+                fontSize: '1.3rem', marginBottom: '28px', position: 'relative',
               }}>Komposisi Bahan Baku</h3>
 
               {[
@@ -74,19 +73,19 @@ export default function Produk() {
                 { label: 'Abu Sekam Padi', pct: 15, color: 'var(--orange)' },
                 { label: 'Semen Portland', pct: 15, color: 'var(--purple)' },
               ].map((item, i) => (
-                <div key={i} style={{ marginBottom: '24px', position: 'relative' }}>
+                <div key={i} style={{ marginBottom: '20px', position: 'relative' }}>
                   <div style={{
                     display: 'flex', justifyContent: 'space-between',
                     marginBottom: '8px', alignItems: 'center',
                   }}>
-                    <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>{item.label}</span>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{item.label}</span>
                     <span style={{
-                      fontWeight: 800, fontSize: '1.1rem', color: item.color,
+                      fontWeight: 800, fontSize: '1rem', color: item.color,
                       fontFamily: 'var(--font-heading)',
                     }}>{item.pct}%</span>
                   </div>
                   <div style={{
-                    height: '12px', background: 'rgba(0,0,0,0.06)',
+                    height: '10px', background: 'rgba(0,0,0,0.06)',
                     borderRadius: '100px', overflow: 'hidden',
                   }}>
                     <div style={{
@@ -98,8 +97,8 @@ export default function Produk() {
               ))}
 
               <div style={{
-                marginTop: '32px', padding: '16px 20px',
-                background: 'white', borderRadius: '16px',
+                marginTop: '28px', padding: '14px 18px',
+                background: 'white', borderRadius: '14px',
                 display: 'flex', alignItems: 'center', gap: '12px',
                 boxShadow: 'var(--shadow-soft)',
               }}>
@@ -113,8 +112,8 @@ export default function Produk() {
                   <Zap size={22} color="white" strokeWidth={2}/>
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>1.000 bata / produksi</div>
-                  <div style={{ color: 'var(--gray)', fontSize: '0.82rem' }}>
+                  <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>1.000 bata / produksi</div>
+                  <div style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>
                     320 kg lumpur · 48 kg sekam · 48 kg semen · 5 pekerja
                   </div>
                 </div>
@@ -122,58 +121,58 @@ export default function Produk() {
             </div>
           </div>
 
-          {/* Right */}
           <div>
             <span className="section-tag" style={{ background: 'var(--teal)' }}>Krueng = Sungai</span>
             <h2 style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+              fontSize: 'clamp(1.6rem, 3vw, 2.5rem)',
               lineHeight: 1.2, margin: '16px 0 20px',
             }}>
               Dari Limbah <br/>
               <span style={{ color: 'var(--teal)' }}>Jadi Nilai</span>
             </h2>
-            <p style={{ color: 'var(--gray)', lineHeight: 1.8, fontSize: '1rem', marginBottom: '20px' }}>
+            <p style={{ color: 'var(--gray)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: '16px' }}>
               Nama <strong>Krueng</strong> diambil dari Bahasa Aceh yang berarti
               <em> sungai</em> — menegaskan identitas lokal sekaligus menggambarkan
               asal bahan baku utamanya dari lumpur banjir Sungai Aceh.
             </p>
-            <p style={{ color: 'var(--gray)', lineHeight: 1.8, fontSize: '1rem', marginBottom: '32px' }}>
+            <p style={{ color: 'var(--gray)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: '28px' }}>
               Berdasarkan data BPBD Kota Banda Aceh, lebih dari <strong>60% wilayah kecamatan</strong> berpotensi
               terdampak banjir setiap tahunnya. Krueng Brick hadir mengubah beban itu menjadi
               peluang ekonomi nyata bagi masyarakat.
             </p>
 
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               {[
                 { num: 'SDG 9', label: 'Industri Berkelanjutan', color: 'var(--orange)' },
                 { num: 'SDG 11', label: 'Kota Tangguh', color: 'var(--teal)' },
                 { num: 'SDG 12', label: 'Konsumsi Bertanggung Jawab', color: 'var(--purple)' },
               ].map((s, i) => (
                 <div key={i} style={{
-                  padding: '8px 16px', borderRadius: '100px',
+                  padding: '6px 14px', borderRadius: '100px',
                   border: `2px solid ${s.color}`,
                   display: 'flex', alignItems: 'center', gap: '8px',
                 }}>
                   <span style={{
                     background: s.color, color: 'white',
-                    fontSize: '0.7rem', fontWeight: 800,
+                    fontSize: '0.65rem', fontWeight: 800,
                     padding: '2px 8px', borderRadius: '100px',
                   }}>{s.num}</span>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 600, color: s.color }}>{s.label}</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: s.color }}>{s.label}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Keunggulan */}
         <h3 style={{
           fontFamily: 'var(--font-heading)', fontSize: '1.6rem',
-          textAlign: 'center', marginBottom: '40px',
+          textAlign: 'center', marginBottom: '32px',
         }}>Keunggulan Produk</h3>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        <div className="keunggulan-grid" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px',
+        }}>
           {keunggulan.map((item, i) => (
             <div key={i}
               onMouseEnter={e => {
@@ -185,19 +184,19 @@ export default function Produk() {
                 e.currentTarget.style.boxShadow = 'var(--shadow-soft)'
               }}
               style={{
-                padding: '32px 24px', background: item.bg,
-                borderRadius: '24px', border: `1px solid ${item.color}22`,
+                padding: '28px 20px', background: item.bg,
+                borderRadius: '20px', border: `1px solid ${item.color}22`,
                 transition: 'var(--transition)', boxShadow: 'var(--shadow-soft)',
                 cursor: 'default',
               }}>
               <div style={{
-                width: 56, height: 56, background: 'white',
-                borderRadius: '16px', display: 'flex',
+                width: 52, height: 52, background: 'white',
+                borderRadius: '14px', display: 'flex',
                 alignItems: 'center', justifyContent: 'center',
-                boxShadow: 'var(--shadow-soft)', marginBottom: '16px',
+                boxShadow: 'var(--shadow-soft)', marginBottom: '14px',
               }}>{item.icon}</div>
-              <h4 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '8px', color: item.color }}>{item.title}</h4>
-              <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.7 }}>{item.desc}</p>
+              <h4 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '8px', color: item.color }}>{item.title}</h4>
+              <p style={{ color: 'var(--gray)', fontSize: '0.82rem', lineHeight: 1.7 }}>{item.desc}</p>
             </div>
           ))}
         </div>

@@ -60,6 +60,11 @@ export default function Kontak() {
     },
   ]
 
+  const scrollTo = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <>
       <section id="kontak" style={{ background: 'var(--cream)', padding: '100px 0' }}>
@@ -77,9 +82,9 @@ export default function Kontak() {
           </div>
 
           {/* Contact Cards */}
-          <div style={{
+          <div className="kontak-grid" style={{
             display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px', marginBottom: '80px',
+            gap: '20px', marginBottom: '64px',
           }}>
             {contacts.map((c, i) => (
               <div key={i}
@@ -92,25 +97,23 @@ export default function Kontak() {
                   e.currentTarget.style.boxShadow = 'var(--shadow-soft)'
                 }}
                 style={{
-                  background: 'white', borderRadius: '24px', padding: '36px 28px',
+                  background: 'white', borderRadius: '20px', padding: '32px 24px',
                   boxShadow: 'var(--shadow-soft)', transition: 'var(--transition)',
                   textAlign: 'center', borderTop: `4px solid ${c.color}`,
                 }}>
                 <div style={{
-                  width: 64, height: 64, background: c.bg, borderRadius: '18px',
+                  width: 60, height: 60, background: c.bg, borderRadius: '16px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  margin: '0 auto 20px', color: c.color,
+                  margin: '0 auto 16px', color: c.color,
                 }}>{c.icon}</div>
-
                 <h4 style={{
-                  fontFamily: 'var(--font-heading)', fontSize: '1.2rem',
-                  marginBottom: '8px', color: 'var(--dark)',
+                  fontFamily: 'var(--font-heading)', fontSize: '1.1rem',
+                  marginBottom: '6px', color: 'var(--dark)',
                 }}>{c.title}</h4>
-                <p style={{ fontWeight: 700, fontSize: '0.95rem', color: c.color, marginBottom: '6px' }}>
+                <p style={{ fontWeight: 700, fontSize: '0.9rem', color: c.color, marginBottom: '4px' }}>
                   {c.value}
                 </p>
-                <p style={{ color: 'var(--gray)', fontSize: '0.82rem', marginBottom: '24px' }}>{c.desc}</p>
-
+                <p style={{ color: 'var(--gray)', fontSize: '0.8rem', marginBottom: '20px' }}>{c.desc}</p>
                 <button onClick={c.action}
                   onMouseEnter={e => {
                     e.currentTarget.style.background = c.color
@@ -123,8 +126,8 @@ export default function Kontak() {
                   style={{
                     background: c.bg, color: c.color,
                     border: `2px solid ${c.color}`,
-                    padding: '10px 24px', borderRadius: '100px',
-                    fontWeight: 700, fontSize: '0.88rem',
+                    padding: '10px 20px', borderRadius: '100px',
+                    fontWeight: 700, fontSize: '0.85rem',
                     fontFamily: 'var(--font-body)', cursor: 'pointer',
                     transition: 'var(--transition)', width: '100%',
                   }}>{c.label}</button>
@@ -134,29 +137,29 @@ export default function Kontak() {
 
           {/* FAQ */}
           <div style={{
-            background: 'white', borderRadius: '28px',
-            padding: '48px', boxShadow: 'var(--shadow-soft)',
+            background: 'white', borderRadius: '24px',
+            padding: '40px', boxShadow: 'var(--shadow-soft)',
           }}>
             <h3 style={{
-              fontFamily: 'var(--font-heading)', fontSize: '1.8rem',
-              textAlign: 'center', marginBottom: '40px',
+              fontFamily: 'var(--font-heading)', fontSize: '1.6rem',
+              textAlign: 'center', marginBottom: '32px',
             }}>Pertanyaan <span style={{ color: 'var(--orange)' }}>Umum</span></h3>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {faqs.map((faq, i) => (
                 <div key={i} style={{
-                  borderRadius: '16px', overflow: 'hidden',
+                  borderRadius: '14px', overflow: 'hidden',
                   border: '1px solid rgba(0,0,0,0.06)',
                 }}>
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{
-                    width: '100%', padding: '20px 24px',
+                    width: '100%', padding: '18px 20px',
                     background: openFaq === i ? 'var(--orange)' : 'var(--cream)',
                     border: 'none', cursor: 'pointer',
                     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                     fontFamily: 'var(--font-body)', transition: 'var(--transition)',
                   }}>
                     <span style={{
-                      fontWeight: 700, fontSize: '0.95rem',
+                      fontWeight: 700, fontSize: '0.9rem',
                       color: openFaq === i ? 'white' : 'var(--dark)', textAlign: 'left',
                     }}>{faq.q}</span>
                     <div style={{
@@ -168,15 +171,14 @@ export default function Kontak() {
                       <ChevronDown size={20} strokeWidth={2}/>
                     </div>
                   </button>
-
                   <div style={{
                     maxHeight: openFaq === i ? '200px' : '0',
                     overflow: 'hidden',
                     transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
                   }}>
                     <p style={{
-                      padding: '20px 24px', color: 'var(--gray)',
-                      fontSize: '0.9rem', lineHeight: 1.8,
+                      padding: '18px 20px', color: 'var(--gray)',
+                      fontSize: '0.88rem', lineHeight: 1.8,
                       margin: 0, background: 'white',
                     }}>{faq.a}</p>
                   </div>
@@ -191,55 +193,56 @@ export default function Kontak() {
       {/* Footer */}
       <footer style={{ background: 'var(--dark)', padding: '60px 0 32px', color: 'white' }}>
         <div className="container">
-          <div style={{
+          <div className="footer-grid" style={{
             display: 'grid', gridTemplateColumns: '2fr 1fr 1fr',
             gap: '48px', marginBottom: '48px',
           }}>
+            {/* Brand */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                 <div style={{
-  width: 40, height: 40,
-  borderRadius: '10px',
-  overflow: 'hidden',
-  display: 'flex', alignItems: 'center', justifyContent: 'center',
-}}>
-  <img
-    src="/logo-krueng.png"
-    alt="Krueng Brick Logo"
-    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-    onError={e => {
-      e.target.style.display = 'none'
-      e.target.parentNode.style.background = 'linear-gradient(135deg, var(--orange), var(--teal))'
-      e.target.parentNode.innerHTML = '<span style="color:white;font-weight:800;font-size:16px;font-family:serif">K</span>'
-    }}
-  />
-</div>
+                  width: 40, height: 40, borderRadius: '10px', overflow: 'hidden',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  background: 'white',
+                }}>
+                  <img
+                    src="/logo-krueng.png"
+                    alt="Krueng Brick"
+                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    onError={e => {
+                      e.target.style.display = 'none'
+                      e.target.parentNode.style.background = 'linear-gradient(135deg, var(--orange), var(--teal))'
+                      e.target.parentNode.innerHTML = '<span style="color:white;font-weight:800;font-size:16px">K</span>'
+                    }}
+                  />
+                </div>
                 <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.2rem' }}>
                   Krueng<span style={{ color: 'var(--orange)' }}>Brick</span>
                 </span>
               </div>
               <p style={{
-                color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem',
+                color: 'rgba(255,255,255,0.6)', fontSize: '0.88rem',
                 lineHeight: 1.8, maxWidth: '300px', marginBottom: '20px',
               }}>
                 Mengubah lumpur banjir menjadi batu bata ramah lingkungan.
                 Solusi waste-to-product untuk Aceh yang lebih berkelanjutan.
               </p>
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                 {['Circular Economy', 'Green Construction'].map((tag, i) => (
                   <span key={i} style={{
                     background: 'rgba(255,255,255,0.08)',
                     color: 'rgba(255,255,255,0.7)',
                     padding: '4px 12px', borderRadius: '100px',
-                    fontSize: '0.75rem', fontWeight: 600,
+                    fontSize: '0.72rem', fontWeight: 600,
                   }}>{tag}</span>
                 ))}
               </div>
             </div>
 
+            {/* Navigasi */}
             <div>
               <h5 style={{
-                fontWeight: 700, fontSize: '0.85rem',
+                fontWeight: 700, fontSize: '0.82rem',
                 letterSpacing: '1.5px', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.4)', marginBottom: '20px',
               }}>Navigasi</h5>
@@ -252,41 +255,37 @@ export default function Kontak() {
                   { label: 'Target Pasar', id: 'pasar' },
                   { label: 'Tim Kami', id: 'tim' },
                 ].map((link, i) => (
-                  <button key={i}
-                    onClick={() => {
-                      const el = document.getElementById(link.id)
-                      if (el) el.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                    style={{
-                      background: 'none', border: 'none', cursor: 'pointer',
-                      color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem',
-                      fontFamily: 'var(--font-body)', textAlign: 'left', padding: 0,
-                      transition: 'var(--transition)',
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.color = 'var(--orange)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
+                  <button key={i} onClick={() => scrollTo(link.id)} style={{
+                    background: 'none', border: 'none', cursor: 'pointer',
+                    color: 'rgba(255,255,255,0.6)', fontSize: '0.88rem',
+                    fontFamily: 'var(--font-body)', textAlign: 'left', padding: 0,
+                    transition: 'var(--transition)',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--orange)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
                   >{link.label}</button>
                 ))}
               </div>
             </div>
 
+            {/* Kontak */}
             <div>
               <h5 style={{
-                fontWeight: 700, fontSize: '0.85rem',
+                fontWeight: 700, fontSize: '0.82rem',
                 letterSpacing: '1.5px', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.4)', marginBottom: '20px',
               }}>Kontak</h5>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
-                  { icon: <MessageCircle size={16}/>, label: 'WhatsApp', value: '+62 823-8446-9964' },
-                  { icon: <Mail size={16}/>, label: 'Email', value: 'rajabiriskan@gmail.com' },
-                  { icon: <MapPin size={16}/>, label: 'Lokasi', value: 'Banda Aceh, Aceh' },
+                  { icon: <MessageCircle size={15}/>, label: 'WhatsApp', value: '+62 823-8446-9964' },
+                  { icon: <Mail size={15}/>, label: 'Email', value: 'rajabiriskan@gmail.com' },
+                  { icon: <MapPin size={15}/>, label: 'Lokasi', value: 'Banda Aceh, Aceh' },
                 ].map((c, i) => (
                   <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                     <div style={{ color: 'rgba(255,255,255,0.4)', marginTop: '1px', flexShrink: 0 }}>{c.icon}</div>
                     <div>
-                      <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', marginBottom: '2px' }}>{c.label}</div>
-                      <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>{c.value}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.72rem', marginBottom: '2px' }}>{c.label}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.82rem' }}>{c.value}</div>
                     </div>
                   </div>
                 ))}
@@ -294,16 +293,16 @@ export default function Kontak() {
             </div>
           </div>
 
-          <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', marginBottom: '28px' }}/>
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', marginBottom: '24px' }}/>
 
-          <div style={{
+          <div className="footer-bottom" style={{
             display: 'flex', justifyContent: 'space-between',
-            alignItems: 'center', flexWrap: 'wrap', gap: '12px',
+            alignItems: 'center', flexWrap: 'wrap', gap: '8px',
           }}>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', margin: 0 }}>
+            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', margin: 0 }}>
               © 2025 Krueng Brick. Hilirisasi Limbah untuk Aceh Berkelanjutan.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', margin: 0 }}>
+            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', margin: 0 }}>
               Dibuat dengan semangat untuk lingkungan & ekonomi lokal Aceh
             </p>
           </div>
